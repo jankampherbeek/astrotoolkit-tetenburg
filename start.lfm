@@ -1,0 +1,18 @@
+object Form1: TForm1
+  Left = 819
+  Height = 240
+  Top = 308
+  Width = 320
+  Caption = 'Form1'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '2.0.2.0'
+  object Label1: TLabel
+    Left = 63
+    Height = 15
+    Top = 28
+    Width = 35
+    Caption = 'Toolkit Astrologie: Tetenburg'
+    ParentColor = False
+  end
+end
