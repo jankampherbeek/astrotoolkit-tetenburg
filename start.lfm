@@ -1,18 +1,311 @@
 object Form1: TForm1
-  Left = 819
-  Height = 240
-  Top = 308
-  Width = 320
-  Caption = 'Form1'
-  ClientHeight = 240
-  ClientWidth = 320
+  Left = 1268
+  Height = 430
+  Top = 253
+  Width = 532
+  Caption = 'Charts Input'
+  ClientHeight = 430
+  ClientWidth = 532
+  Color = 16119266
+  OnShow = FormShow
   LCLVersion = '2.0.2.0'
-  object Label1: TLabel
-    Left = 63
-    Height = 15
-    Top = 28
-    Width = 35
-    Caption = 'Toolkit Astrologie: Tetenburg'
+  object LblTitle: TLabel
+    Left = 13
+    Height = 44
+    Top = 8
+    Width = 503
+    Caption = 'Astrologie Toolkit - Tetenburg'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clOlive
+    Font.Height = -40
+    Font.Name = 'Liberation Sans'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
     ParentColor = False
+    ParentFont = False
+  end
+  object LblLongitude: TLabel
+    Left = 15
+    Height = 15
+    Top = 186
+    Width = 82
+    Caption = 'Lengte (g, m, s)'
+    ParentColor = False
+  end
+  object LblLatitude: TLabel
+    Left = 245
+    Height = 15
+    Top = 186
+    Width = 86
+    Caption = 'Breedte (g, m, s)'
+    ParentColor = False
+  end
+  object BtnCalc: TButton
+    Left = 448
+    Height = 25
+    Top = 392
+    Width = 75
+    Caption = 'Bereken'
+    OnClick = BtnCalcClick
+    TabOrder = 15
+  end
+  object EditLongitudeDegrees: TEdit
+    Left = 15
+    Height = 23
+    Top = 205
+    Width = 32
+    NumbersOnly = True
+    TabOrder = 1
+    Text = '6'
+  end
+  object EditLongitudeMinutes: TEdit
+    Left = 49
+    Height = 23
+    Top = 205
+    Width = 32
+    NumbersOnly = True
+    TabOrder = 2
+    Text = '54'
+  end
+  object EditLongitudeSeconds: TEdit
+    Left = 85
+    Height = 23
+    Top = 205
+    Width = 32
+    NumbersOnly = True
+    TabOrder = 3
+  end
+  object RGLongitude: TRadioGroup
+    Left = 128
+    Height = 44
+    Top = 186
+    Width = 93
+    AutoFill = True
+    Caption = 'Oost of West'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 24
+    ClientWidth = 89
+    ColumnLayout = clVerticalThenHorizontal
+    Columns = 2
+    TabOrder = 4
+    object RBLongitudeEast: TRadioButton
+      Left = 6
+      Height = 24
+      Top = 0
+      Width = 38
+      Caption = 'O'
+      Checked = True
+      TabOrder = 1
+      TabStop = True
+    end
+    object RBLongitudeWest: TRadioButton
+      Left = 44
+      Height = 24
+      Top = 0
+      Width = 39
+      Caption = 'W'
+      TabOrder = 0
+    end
+  end
+  object EditLatitudeDegrees: TEdit
+    Left = 245
+    Height = 23
+    Top = 205
+    Width = 31
+    NumbersOnly = True
+    TabOrder = 5
+    Text = '52'
+  end
+  object EditLatitudeMinutes: TEdit
+    Left = 279
+    Height = 23
+    Top = 205
+    Width = 31
+    NumbersOnly = True
+    TabOrder = 6
+    Text = '13'
+  end
+  object EditLatitudeSeconds: TEdit
+    Left = 316
+    Height = 23
+    Top = 205
+    Width = 31
+    NumbersOnly = True
+    TabOrder = 7
+  end
+  object RGLatitude: TRadioGroup
+    Left = 363
+    Height = 42
+    Top = 186
+    Width = 93
+    AutoFill = True
+    Caption = 'Noord of Zuid'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 22
+    ClientWidth = 89
+    ColumnLayout = clVerticalThenHorizontal
+    Columns = 2
+    TabOrder = 8
+    object RBLatitudeNorth: TRadioButton
+      Left = 6
+      Height = 22
+      Top = 0
+      Width = 40
+      Caption = 'N'
+      Checked = True
+      TabOrder = 1
+      TabStop = True
+    end
+    object RBLatitudeSouth: TRadioButton
+      Left = 46
+      Height = 22
+      Top = 0
+      Width = 37
+      Caption = 'Z'
+      TabOrder = 0
+    end
+  end
+  object LblDate: TLabel
+    Left = 15
+    Height = 15
+    Top = 234
+    Width = 149
+    Caption = 'Datum (j, m, d, Gregoriaans)'
+    ParentColor = False
+  end
+  object EditDateMonth: TEdit
+    Left = 85
+    Height = 23
+    Top = 253
+    Width = 33
+    NumbersOnly = True
+    TabOrder = 10
+    Text = '1'
+  end
+  object EditDateDay: TEdit
+    Left = 123
+    Height = 23
+    Top = 253
+    Width = 31
+    NumbersOnly = True
+    TabOrder = 11
+    Text = '29'
+  end
+  object EditDateYear: TEdit
+    Left = 15
+    Height = 23
+    Top = 253
+    Width = 65
+    NumbersOnly = True
+    TabOrder = 9
+    Text = '1953'
+  end
+  object LblTime: TLabel
+    Left = 245
+    Height = 15
+    Top = 235
+    Width = 125
+    Caption = 'Tijd (u, m, s) in UT/MGT'
+    ParentColor = False
+  end
+  object EditTimeHour: TEdit
+    Left = 245
+    Height = 23
+    Top = 253
+    Width = 32
+    NumbersOnly = True
+    TabOrder = 12
+    Text = '7'
+  end
+  object EditTimeMinute: TEdit
+    Left = 280
+    Height = 23
+    Top = 253
+    Width = 32
+    NumbersOnly = True
+    TabOrder = 13
+    Text = '37'
+  end
+  object EditTimeSecond: TEdit
+    Left = 316
+    Height = 23
+    Top = 253
+    Width = 32
+    NumbersOnly = True
+    TabOrder = 14
+    Text = '30'
+  end
+  object BtnHelp: TButton
+    Left = 14
+    Height = 25
+    Top = 392
+    Width = 75
+    Caption = 'Help'
+    TabOrder = 16
+  end
+  object LblStatus: TLabel
+    Left = 13
+    Height = 15
+    Top = 296
+    Width = 48
+    Caption = 'LblStatus'
+    ParentColor = False
+  end
+  object BtnClose: TButton
+    Left = 104
+    Height = 25
+    Top = 392
+    Width = 75
+    Cancel = True
+    Caption = 'Sluiten'
+    OnClick = BtnCloseClick
+    TabOrder = 17
+  end
+  object EditName: TEdit
+    Left = 13
+    Height = 23
+    Top = 144
+    Width = 507
+    TabOrder = 0
+    Text = 'jk'
+  end
+  object LblName: TLabel
+    Left = 13
+    Height = 15
+    Top = 128
+    Width = 93
+    Caption = 'Naam (optioneel)'
+    ParentColor = False
+  end
+  object lblEnterData: TLabel
+    Left = 15
+    Height = 25
+    Top = 72
+    Width = 438
+    Caption = 'Voer de gegevens in voor de betreffende horoscoop'
+    Font.Color = clOlive
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object BtnNew: TButton
+    Left = 363
+    Height = 25
+    Top = 392
+    Width = 75
+    Caption = 'Opnieuw'
+    TabOrder = 18
   end
 end

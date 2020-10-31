@@ -7,7 +7,9 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, start
+  Forms, start, UiSharedDomain, XSharedDictionary, XSharedDomain, BeSwissDelphi,
+  XSharedEndpoints, XChartsDomain, BeSharedHandlers, BeSharedSeFrontend,
+  BeSharedHelpers, UiGraph, UiChartsPositions
   { you can add units after this };
 
 {$R *.res}
@@ -17,6 +19,7 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormChartsPositions, FormChartsPositions);
   Application.Run;
 end.
 
