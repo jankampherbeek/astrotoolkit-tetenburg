@@ -8,7 +8,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi;
+  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi, Validators;
 type
 
   TObjectPositionsArray = Array of Double;
@@ -24,10 +24,22 @@ type
 TFormChartsPositions = class(TForm)
   BtnClose: TButton;
   BtnHelp: TButton;
+  BtnCalcCritPoint: TButton;
+  EditYearCp: TEdit;
+  EditMonthCp: TEdit;
+  EditDayCp: TEdit;
+  EditHourCp: TEdit;
+  EditMinuteCp: TEdit;
+  EditSecondCp: TEdit;
+  LblCritPoint: TLabel;
+  LblDate: TLabel;
+  LblTime: TLabel;
+  LblStatus: TLabel;
   LblTitle: TLabel;
   SGHouses: TStringGrid;
   SGPositions: TStringGrid;
   procedure BtnCloseClick;
+  procedure BtnCalcCritPointClick(Sender: TObject);
   procedure FormCreate;
   procedure FormShow;
 private
@@ -39,6 +51,9 @@ private
   procedure ShowPositions;
   procedure HandlePositions;
   procedure InitValues;
+  procedure ProcessDateCp;
+  procedure ProcessTimeCp;
+  procedure DefineLookandFeel;
 
 public
   property FullChartResponse: TFullChartResponse write FFullChartResponse;
@@ -59,6 +74,10 @@ var
   SignGlyphsArray: TSignGlyphsArray;
   TextRow: Array[0..13] of String;
   TextRowHouses: Array[0..6] of String;
+  ErrorFlag: Boolean;
+  ErrorText: String;
+  Date: TValidatedDateDto;
+  Time: TValidatedTimeDto;
 
 implementation
 
@@ -68,10 +87,81 @@ implementation
 uses
   UiGraph;
 
+var
+    Styling: TStyling;
+
+const
+  ERROR_DATE = 'Corrigeer de invoer voor de datum.';
+  ERROR_TIME = 'Corrigeer de invoer voor de tijd.';
+
 procedure TFormChartsPositions.BtnCloseClick;
 begin
   Close;
 end;
+
+procedure TFormChartsPositions.BtnCalcCritPointClick(Sender: TObject);
+begin
+  LblStatus.Color:= Styling.DataBgColor;
+  LblStatus.Caption:= 'Maak je keuze';
+  ErrorFlag := False;
+  ErrorText := '';
+  ProcessDateCp;
+  ProcessTimeCp;
+
+  if ErrorFlag then begin
+    LblStatus.Color:= Styling.DataErrorColor;
+    LblStatus.Caption:= ErrorText;
+  end else begin
+    DateTimeDto:= TDateTimeDto.Create(Date.Year, Date.Month, Date.Day, Time.DecimalTime);
+    //   TODO define new popup  FormChartsPositions.ShowModal;
+//    Close;
+  end;
+end;
+
+procedure TFormChartsPositions.ProcessDateCp;
+var
+  DateValidator: TDateValidator;
+begin
+  EditYearCp.Color := clDefault;
+  EditMonthCp.Color := clDefault;
+  EditDayCp.Color := clDefault;
+
+  DateValidator:= TDateValidator.Create;
+  Date:=DateValidator.CalcAndCheck(EditYearCp.Text,
+                                   EditMonthCp.Text,
+                                   EditDayCp.Text);
+  if not Date.Valid then  begin
+    ErrorFlag := True;
+    ErrorText := ErrorText + ERROR_DATE + LineEnding;
+    EditYearCp.Color := clYellow;
+    EditMonthCp.Color := clYellow;
+    EditDayCp.Color := clYellow;
+  end;
+end;
+
+procedure TFormChartsPositions.ProcessTimeCp;
+var
+  TimeValidator: TTimeValidator;
+begin
+  EditHourCp.Color:=clDefault;
+  EditMinuteCp.Color:=clDefault;
+  EditSecondCp.Color:=clDefault;
+  TimeValidator:= TTimeValidator.Create;
+  if EditSecondCp.Text = '' then EditSecondCp.Text := '0';
+  if EditMinuteCp.Text = '' then EditMinuteCp.Text := '0';
+  if EditHourCp.Text = '' then EditHourCp.Text := '0';
+  Time:=TimeValidator.CalcAndCheck(EditHourCp.Text,
+                                   EditMinuteCp.Text,
+                                   EditSecondCp.Text);
+  if not Time.Valid then begin
+    ErrorFlag := True;
+    ErrorText := ErrorText + ERROR_TIME + LineEnding;
+    EditHourCp.Color := clYellow;
+    EditMinuteCp.Color := clYellow;
+    EditSecondCp.Color := clYellow;
+  end;
+end;
+
 
 procedure TFormChartsPositions.FormCreate;
 begin
@@ -85,6 +175,7 @@ end;
 procedure TFormChartsPositions.FormShow;
 begin
   InitValues;
+  DefineLookandFeel;
   HandlePositions;
   ShowPositions;
 end;
@@ -183,6 +274,22 @@ begin
   SignGlyphsArray[10]:= '-';      // Aquarius
   SignGlyphsArray[11]:= '=';      // Pisces
 end;
+
+
+procedure TFormChartsPositions.DefineLookandFeel;
+begin
+  Styling:= TStyling.Create;
+  FormChartsPositions.Color:= Styling.DataBgColor;
+  // Labels
+  //LblTitle.Font:= Styling.DataFontSubHeading;
+  //LblName.Font:= Styling.DataFontText;
+  //LblLongitude.Font:= Styling.DataFontText;
+  //LblLatitude.Font:= Styling.DataFontText;
+  //LblDate.Font:= Styling.DataFontText;
+  //LblTime.Font:= Styling.DataFontText;
+  LblStatus.Color:= Styling.DataBgColor;
+end;
+
 
 end.
 

@@ -1,11 +1,11 @@
 object FormChartsPositions: TFormChartsPositions
-  Left = 900
+  Left = 750
   Height = 574
-  Top = 182
-  Width = 901
+  Top = 214
+  Width = 684
   Caption = 'Enigma-Charts-Positions'
   ClientHeight = 574
-  ClientWidth = 901
+  ClientWidth = 684
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.2.0'
@@ -218,5 +218,94 @@ object FormChartsPositions: TFormChartsPositions
     Caption = 'Help'
     OnClick = BtnCloseClick
     TabOrder = 3
+  end
+  object LblCritPoint: TLabel
+    Left = 400
+    Height = 48
+    Top = 12
+    Width = 241
+    Caption = 'Kritieke punt'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clOlive
+    Font.Height = -43
+    Font.Name = 'Liberation Sans'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object EditYearCp: TEdit
+    Left = 400
+    Height = 23
+    Top = 104
+    Width = 56
+    TabOrder = 4
+  end
+  object EditMonthCp: TEdit
+    Left = 464
+    Height = 23
+    Top = 104
+    Width = 24
+    TabOrder = 5
+  end
+  object EditDayCp: TEdit
+    Left = 496
+    Height = 23
+    Top = 104
+    Width = 24
+    TabOrder = 6
+  end
+  object LblDate: TLabel
+    Left = 400
+    Height = 15
+    Top = 87
+    Width = 102
+    Caption = 'Jaar, maand en dag'
+    ParentColor = False
+  end
+  object EditHourCp: TEdit
+    Left = 536
+    Height = 23
+    Top = 104
+    Width = 24
+    TabOrder = 7
+  end
+  object EditMinuteCp: TEdit
+    Left = 568
+    Height = 23
+    Top = 104
+    Width = 24
+    TabOrder = 8
+  end
+  object EditSecondCp: TEdit
+    Left = 600
+    Height = 23
+    Top = 104
+    Width = 24
+    TabOrder = 9
+  end
+  object LblTime: TLabel
+    Left = 536
+    Height = 15
+    Top = 88
+    Width = 75
+    Caption = 'Uren, min, sec'
+    ParentColor = False
+  end
+  object BtnCalcCritPoint: TButton
+    Left = 400
+    Height = 25
+    Top = 144
+    Width = 75
+    Caption = 'Bereken'
+    OnClick = BtnCalcCritPointClick
+    TabOrder = 10
+  end
+  object LblStatus: TLabel
+    Left = 400
+    Height = 1
+    Top = 528
+    Width = 1
+    ParentColor = False
   end
 end
