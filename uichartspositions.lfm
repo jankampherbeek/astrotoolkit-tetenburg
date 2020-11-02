@@ -1,0 +1,222 @@
+object FormChartsPositions: TFormChartsPositions
+  Left = 900
+  Height = 574
+  Top = 182
+  Width = 901
+  Caption = 'Enigma-Charts-Positions'
+  ClientHeight = 574
+  ClientWidth = 901
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '2.0.2.0'
+  object LblTitle: TLabel
+    Left = 16
+    Height = 48
+    Top = 12
+    Width = 259
+    Caption = 'Posities radix'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clOlive
+    Font.Height = -43
+    Font.Name = 'Liberation Sans'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object BtnClose: TButton
+    Left = 1021
+    Height = 25
+    Top = 752
+    Width = 75
+    Caption = 'Close'
+    OnClick = BtnCloseClick
+    TabOrder = 0
+  end
+  object SGPositions: TStringGrid
+    Left = 16
+    Height = 296
+    Top = 80
+    Width = 280
+    AlternateColor = clMoneyGreen
+    BorderStyle = bsNone
+    ColCount = 4
+    ColumnClickSorts = True
+    Columns = <    
+      item
+        Alignment = taRightJustify
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -21
+        Font.Name = 'EnigmaAstrology'
+        Font.Pitch = fpVariable
+        Font.Quality = fqAntialiased
+        MaxSize = 20
+        Title.Caption = 'Object'
+        Width = 47
+      end    
+      item
+        Alignment = taRightJustify
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -12
+        Font.Name = 'Liberation Mono'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
+        Title.Caption = 'Positie'
+        Width = 86
+      end    
+      item
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -21
+        Font.Name = 'EnigmaAstrology'
+        Font.Pitch = fpVariable
+        Font.Quality = fqAntialiased
+        MaxSize = 20
+        Title.Font.CharSet = ANSI_CHARSET
+        Title.Font.Height = -13
+        Title.Font.Name = 'Liberation Sans'
+        Title.Font.Pitch = fpVariable
+        Title.Font.Quality = fqDraft
+        Title.Caption = 'Teken'
+        Width = 49
+      end    
+      item
+        Alignment = taRightJustify
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -12
+        Font.Name = 'Liberation Mono'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
+        Title.Alignment = taRightJustify
+        Title.Font.CharSet = ANSI_CHARSET
+        Title.Font.Height = -12
+        Title.Font.Name = 'Courier New'
+        Title.Font.Pitch = fpVariable
+        Title.Font.Quality = fqDraft
+        Title.Caption = 'Decimaal'
+        Width = 90
+      end>
+    DefaultColWidth = 86
+    FixedCols = 0
+    FixedRows = 0
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -12
+    Font.Name = 'Liberation Mono'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goAutoAddRows, goSmoothScroll]
+    ParentFont = False
+    RowCount = 13
+    TabOrder = 1
+    TabStop = False
+    TitleFont.CharSet = ANSI_CHARSET
+    TitleFont.Height = -12
+    TitleFont.Name = 'Liberation Mono'
+    TitleFont.Pitch = fpVariable
+    TitleFont.Quality = fqDraft
+    ColWidths = (
+      47
+      86
+      49
+      90
+    )
+    RowHeights = (
+      22
+      22
+      22
+      22
+      22
+      22
+      22
+      22
+      22
+      22
+      22
+      22
+      22
+    )
+  end
+  object SGHouses: TStringGrid
+    Left = 16
+    Height = 96
+    Top = 392
+    Width = 280
+    AlternateColor = clMoneyGreen
+    BorderStyle = bsNone
+    ColCount = 4
+    Columns = <    
+      item
+        Title.Font.CharSet = ANSI_CHARSET
+        Title.Font.Height = -12
+        Title.Font.Name = 'Liberation Mono'
+        Title.Font.Pitch = fpFixed
+        Title.Font.Quality = fqDraft
+        Title.Caption = 'Punt'
+        Width = 47
+      end    
+      item
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -12
+        Font.Name = 'Liberation Mono'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
+        Title.Alignment = taRightJustify
+        Title.Font.CharSet = ANSI_CHARSET
+        Title.Font.Height = -12
+        Title.Font.Name = 'Liberation Mono'
+        Title.Font.Pitch = fpFixed
+        Title.Font.Quality = fqDraft
+        Title.Caption = 'Positie'
+        Width = 86
+      end    
+      item
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -21
+        Font.Name = 'EnigmaAstrology'
+        Font.Pitch = fpVariable
+        Font.Quality = fqAntialiased
+        Title.Caption = 'Teken'
+        Width = 49
+      end    
+      item
+        Alignment = taRightJustify
+        Title.Alignment = taRightJustify
+        Title.Font.Height = -12
+        Title.Font.Name = 'Courier New'
+        Title.Caption = 'Decimaal'
+        Width = 90
+      end>
+    DefaultColWidth = 86
+    FixedCols = 0
+    FixedRows = 0
+    Font.Height = -12
+    Font.Name = 'Liberation Mono'
+    ParentFont = False
+    RowCount = 4
+    TabOrder = 2
+    TabStop = False
+    TitleFont.Height = -12
+    TitleFont.Name = 'Liberation Mono'
+    ColWidths = (
+      47
+      86
+      49
+      90
+    )
+    RowHeights = (
+      22
+      22
+      22
+      22
+    )
+  end
+  object BtnHelp: TButton
+    Left = 16
+    Height = 25
+    Top = 528
+    Width = 75
+    Caption = 'Help'
+    OnClick = BtnCloseClick
+    TabOrder = 3
+  end
+end

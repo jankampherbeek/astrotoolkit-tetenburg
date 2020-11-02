@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ActnList,
-  XSharedDomain, XSharedEndpoints, UiGraph, UiChartsPositions, XChartsDomain;
+  UiGraph, UiChartsPositions, Domain;
 
 type
 
@@ -65,17 +65,12 @@ var
   ReadyForCalc, ErrorFlag: Boolean;
   Form1: TForm1;
 
-  //FullChartRequest: TFullChartRequest;
-  //TempDate: TValidatedDateDto;
-  //TempTime: TValidatedTimeDto;
-
 implementation
 
 {$R *.lfm}
 
 uses
-  XSharedDictionary;
-//  XChartsEndpoints, XSharedDictionary, XSharedNameEndpoints;
+  XSharedDictionary, Validators;
 
 var
   Name, LocationName: String;
@@ -105,19 +100,19 @@ end;
 
 procedure TForm1.ProcessLongitude;
 var
-  CheckedLongitude: TValidatedLongitudeEndpoint;
+  LongitudeValidator: TLongitudeValidator;
   Direction: String;
 begin
   EditLongitudeDegrees.Color:= clDefault;
   EditLongitudeMinutes.Color:= clDefault;
   EditLongitudeSeconds.Color:= clDefault;
   if RBLongitudeEast.Checked then Direction:= LONG_EAST else Direction := LONG_WEST;
-  CheckedLongitude:= TValidatedLongitudeEndpoint.Create;
+  LongitudeValidator:= TLongitudeValidator.Create;
   if EditLongitudeSeconds.Text = '' then EditLongitudeSeconds.Text := EMPTY_SECONDS;
-  Longitude := CheckedLongitude.HandleInput(EditLongitudeDegrees.Text,
-                                            EditLongitudeMinutes.Text,
-                                            EditLongitudeSeconds.Text,
-                                            Direction);
+  Longitude := LongitudeValidator.CalcAndCheck(EditLongitudeDegrees.Text,
+                                               EditLongitudeMinutes.Text,
+                                               EditLongitudeSeconds.Text,
+                                               Direction);
   LongitudeInput:= EditLongitudeDegrees.Text + DOT + EditLongitudeMinutes.Text +
                    DOT + EditLongitudeSeconds.Text + SPACE + Direction;
   if not Longitude.Valid then begin
@@ -131,7 +126,7 @@ end;
 
 procedure TForm1.ProcessLatitude;
 var
-  CheckedLatitude: TValidatedLatitudeEndpoint;
+  LatitudeValidator: TLatitudeValidator;
   Direction: String;
 begin
   EditLatitudeDegrees.Color:= clDefault;
@@ -139,12 +134,12 @@ begin
   EditLatitudeSeconds.Color:= clDefault;
   if RBLatitudeNorth.Checked then Direction := LAT_NORTH
   else Direction := LAT_SOUTH;
-  CheckedLatitude:= TValidatedLatitudeEndpoint.Create;
+  LatitudeValidator:= TLatitudeValidator.Create;
   if EditLatitudeSeconds.Text = '' then EditLatitudeSeconds.Text := EMPTY_SECONDS;
-  Latitude := CheckedLatitude.HandleInput(EditLatitudeDegrees.Text,
-                                          EditLatitudeMinutes.Text,
-                                          EditLatitudeSeconds.Text,
-                                          Direction);
+  Latitude := LatitudeValidator.CalcAndCheck(EditLatitudeDegrees.Text,
+                                             EditLatitudeMinutes.Text,
+                                             EditLatitudeSeconds.Text,
+                                             Direction);
   LatitudeInput:= EditLatitudeDegrees.Text + DOT + EditLatitudeMinutes.Text +
                   DOT + EditLatitudeSeconds.Text + SPACE + Direction;
   if not Latitude.Valid then begin
@@ -158,16 +153,16 @@ end;
 
 procedure TForm1.ProcessDate;
 var
-  DateEndpoint: TValidatedDateEndpoint;
+  DateValidator: TDateValidator;
 begin
   EditDateDay.Color := clDefault;
   EditDateMonth.Color := clDefault;
   EditDateYear.Color := clDefault;
 
-  DateEndpoint:= TValidatedDateEndpoint.Create;
-  Date:=DateEndpoint.HandleInput(EditDateYear.Text,
-                                 EditDateMonth.Text,
-                                 EditDateDay.Text);
+  DateValidator:= TDateValidator.Create;
+  Date:=DateValidator.CalcAndCheck(EditDateYear.Text,
+                                   EditDateMonth.Text,
+                                   EditDateDay.Text);
   if not Date.Valid then  begin
     ErrorFlag := True;
     ErrorText := ErrorText + ERROR_DATE + LineEnding;
@@ -179,16 +174,16 @@ end;
 
 procedure TForm1.ProcessTime;
 var
-  TimeEndpoint: TValidatedTimeEndpoint;
+  TimeValidator: TTimeValidator;
 begin
   EditTimeHour.Color:=clDefault;
   EditTimeMinute.Color:=clDefault;
   EditTimeSecond.Color:=clDefault;
-  TimeEndpoint:= TValidatedTimeEndpoint.Create;
+  TimeValidator:= TTimeValidator.Create;
   if EditTimeSecond.Text = '' then EditTimeSecond.Text := EMPTY_SECONDS;
-  Time:=TimeEndpoint.HandleInput(EditTimeHour.Text,
-                                 EditTimeMinute.Text,
-                                 EditTimeSecond.Text);
+  Time:=TimeValidator.CalcAndCheck(EditTimeHour.Text,
+                                   EditTimeMinute.Text,
+                                   EditTimeSecond.Text);
   if not Time.Valid then begin
     ErrorFlag := True;
     ErrorText := ErrorText + ERROR_TIME + LineEnding;
@@ -232,8 +227,6 @@ begin
     Close;
   end;
 end;
-
-
 
 
 procedure TForm1.BtnCloseClick;

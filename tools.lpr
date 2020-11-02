@@ -7,9 +7,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, start, UiSharedDomain, XSharedDictionary, XSharedDomain, BeSwissDelphi,
-  XSharedEndpoints, XChartsDomain, BeSharedHandlers, BeSharedSeFrontend,
-  BeSharedHelpers, UiGraph, UiChartsPositions
+  Forms, start, XSharedDictionary, BeSwissDelphi,
+  BeSharedSeFrontend, UiGraph, UiChartsPositions, Validators, Domain
   { you can add units after this };
 
 {$R *.res}

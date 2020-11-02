@@ -37,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="15">
+    <Units Count="11">
       <Unit0>
         <Filename Value="tools.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -54,67 +54,47 @@
         <IsPartOfProject Value="True"/>
       </Unit2>
       <Unit3>
-        <Filename Value="uishareddomain.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="UiSharedDomain"/>
-      </Unit3>
-      <Unit4>
         <Filename Value="xshareddictionary.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="XSharedDictionary"/>
-      </Unit4>
-      <Unit5>
-        <Filename Value="xshareddomain.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="XSharedDomain"/>
-      </Unit5>
-      <Unit6>
+      </Unit3>
+      <Unit4>
         <Filename Value="beswissdelphi.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="BeSwissDelphi"/>
-      </Unit6>
-      <Unit7>
-        <Filename Value="xsharedendpoints.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="XSharedEndpoints"/>
-      </Unit7>
-      <Unit8>
-        <Filename Value="xchartsdomain.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="XChartsDomain"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="besharedhandlers.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="BeSharedHandlers"/>
-      </Unit9>
-      <Unit10>
+      </Unit4>
+      <Unit5>
         <Filename Value="besharedsefrontend.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="BeSharedSeFrontend"/>
-      </Unit10>
-      <Unit11>
-        <Filename Value="besharedhelpers.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="BeSharedHelpers"/>
-      </Unit11>
-      <Unit12>
+      </Unit5>
+      <Unit6>
         <Filename Value="uigraph.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UiGraph"/>
-      </Unit12>
-      <Unit13>
+      </Unit6>
+      <Unit7>
         <Filename Value="uichartspositions.lfm"/>
         <IsPartOfProject Value="True"/>
-      </Unit13>
-      <Unit14>
+      </Unit7>
+      <Unit8>
         <Filename Value="uichartspositions.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormChartsPositions"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UiChartsPositions"/>
-      </Unit14>
+      </Unit8>
+      <Unit9>
+        <Filename Value="validators.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Validators"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="domain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Domain"/>
+      </Unit10>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
