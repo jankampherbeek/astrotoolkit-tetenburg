@@ -15,8 +15,7 @@ type
   TCelObjectDto = class;
   TFullChartRequest = class;
   TIdNameTextDto = class;
-
-TIdNameTextDtoArray = Array of TIdNameTextDto;
+  TIdNameTextDtoArray = Array of TIdNameTextDto;
   TBodyDtoArray = Array of TBodyDto;
   TGlyphsBodiesDtoArray = Array of TGlyphsBodiesDto;
   TGlyphsSignsDtoArray = Array of TGlyphsSignsDto;
@@ -148,10 +147,11 @@ end;
 TCelObjectComponentDto = class
 strict private
   FMainPos: Double;
+  FSpeed: Double;
 public
   constructor Create(CalculatedValues: Array of Double);
   property MainPos: Double read FMainPos;
-
+  property Speed: Double read FSpeed;
 end;
 
 { DTO for a fully defined position of a celestial object. }
@@ -160,12 +160,13 @@ strict private
   FObjectId: Integer;
   FGlyph: String;
   FLongitude: Double;
-
+  FSpeed: Double;
 public
-  constructor Create(PObjectId: Integer; PGlyph: String; PLongitude: Double);
+  constructor Create(PObjectId: Integer; PGlyph: String; PLongitude, PSpeed: Double);
   property ObjectId: Integer read FObjectId;
   property Glyph: String read FGlyph;
   property Longitude: Double read FLongitude;
+  property Speed: Double read FSpeed;
 end;
 
 { Response to a request to calculate asc and mc. }
@@ -372,15 +373,17 @@ end;
 constructor TCelObjectComponentDto.Create(CalculatedValues: Array of Double);
 begin
   FMainPos:= CalculatedValues[0];
+  FSpeed:= CalculatedValues[3];
 end;
 
 
 { TCelObjectDto }
-constructor TCelObjectDto.Create(PObjectId: Integer; PGlyph: String; PLongitude: Double);
+constructor TCelObjectDto.Create(PObjectId: Integer; PGlyph: String; PLongitude, PSpeed: Double);
 begin
   FObjectId:= PObjectId;
   FGlyph:= PGlyph;
   FLongitude:= PLongitude;
+  FSpeed:= PSpeed;
 end;
 
 

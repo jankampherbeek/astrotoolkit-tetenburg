@@ -37,7 +37,14 @@ TSeFrontend = class        // singleton based on last example at http://wiki.fre
    for the type of calculation.}
    function CalculateCelestialObject(PJulianDay:Double; PSeId:Integer; PFlags:LongInt): TCelObjectComponentDto;
 
+   { Convert ecliptical coördinates into equatorial coördinates. The resulting array contains the right ascension
+   at index 0 and the declination at index 1, index 2 can be ignored. }
+   function Ecliptic2Equatorial(PLong, Plat, PEpsilon: Double): TDoubleArray;
+
    function CalculateHouses(PJulianDay, PObliquity:Double; PLocation: TLocationDto): THousesResponse ;
+
+   { Calculates the ascendant from the ARMC }
+   function AscFromMc(Armc, GeoLat, Eps: Double): Double;
 
    { Returns SeId for a BodyId }
    function DefineSeId(BodyId: Integer): Integer;
@@ -113,6 +120,21 @@ begin
   Result:= CelObject;
 end;
 
+function TSeFrontend.Ecliptic2Equatorial(PLong, Plat, PEpsilon: Double): TDoubleArray;
+var
+  EclipticValues, EquatorialValues: TDoubleArray;
+  NegativeEpsilon: Double;  // for conversion ecliptic to equatorial, Epsilon must be negative.
+begin
+  SetLength(EclipticValues, 3);
+  SetLength(EquatorialValues, 3);
+  NegativeEpsilon:= -(Abs(PEpsilon));
+  EclipticValues[0]:= PLong;
+  EclipticValues[1]:= PLat;
+  EclipticValues[2]:= 1.0;   // distance can be ignored, the value 1.0 is just a placeholder.
+  swe_cotrans(EclipticValues[0], EquatorialValues[0], NegativeEpsilon);
+  Result:= EquatorialValues;
+end;
+
 
 function TSeFrontend.CalculateHouses(PJulianDay, PObliquity:Double; PLocation: TLocationDto): THousesResponse ;
 var
@@ -128,6 +150,18 @@ begin
   Asc:= AscMcValues[0];
   Mc:= AscMcValues[1];
   Result:= THousesResponse.Create(Mc, Asc);
+end;
+
+
+function TSeFrontend.AscFromMc(Armc, GeoLat, Eps: Double): Double;
+var
+  HouseValues: Array of Double;
+  AscMcValues: Array[0..10] of Double;
+  ReturnValue: Integer;
+begin
+  SetLength(HouseValues, 13);
+  ReturnValue:= swe_houses_armc(Armc, GeoLat, Eps, 'W', HouseValues[0], AscMcValues[0]);
+  Result:= AscMcValues[0];
 end;
 
 
