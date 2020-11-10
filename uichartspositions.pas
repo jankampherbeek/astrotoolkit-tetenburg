@@ -8,7 +8,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi, Validators, UiCpResult;
+  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi, Validators, UiCpResult, Utils;
 
 type
 
@@ -32,6 +32,8 @@ type
     EditHourCp: TEdit;
     EditMinuteCp: TEdit;
     EditSecondCp: TEdit;
+    LblPrevIncarnationResult: TLabel;
+    LblPrevIncarnation: TLabel;
     LblCritPoint: TLabel;
     LblDate: TLabel;
     LblTime: TLabel;
@@ -56,6 +58,7 @@ type
     procedure ProcessDateCp;
     procedure ProcessTimeCp;
     procedure DefineLookandFeel;
+    procedure ShowPrevIncarnation;
 
   public
     property DateTimeDto: TDateTimeDto read FDateTimeDto write FDateTimeDto;
@@ -83,6 +86,8 @@ var
   ErrorText: string;
   Date: TValidatedDateDto;
   Time: TValidatedTimeDto;
+  Mc, Asc, Moon: Double;
+  TimeTextConstructor: TTimeTextConstructor;
 
 implementation
 
@@ -90,7 +95,7 @@ implementation
 
 { TFormChartsPositions }
 uses
-  UiGraph;
+  UiGraph, Reincarnation;
 
 var
   Styling: TStyling;
@@ -186,10 +191,12 @@ end;
 
 procedure TFormChartsPositions.FormShow;
 begin
+  TimeTextConstructor:= TTimeTextConstructor.Create;
   InitValues;
   DefineLookandFeel;
   HandlePositions;
   ShowPositions;
+  ShowPrevIncarnation;
 end;
 
 procedure TFormChartsPositions.HandlePositions;
@@ -235,18 +242,35 @@ begin
     SGPositions.Rows[i].add(SignGlyphsArray[SignDmsValue.SignId - 1]);
     SGPositions.Rows[i].add(DecimalValue.Text);
   end;
+  Moon := ObjectPositionsArray[1];
+
   SignDmsValue.SetNewLongitude(MundPosArray[0]);
   DecimalValue := TDecimalValue.Create(MundPosArray[0]);
+  //Mc := MundPosArray[0];
   SGHouses.Rows[0].Add('MC');
   SGHouses.Rows[0].Add(SignDmsValue.Text);
   SGHouses.Rows[0].Add(SignGlyphsArray[SignDmsValue.SignId]);
   SGHouses.Rows[0].Add(DecimalValue.Text);
   SignDmsValue.SetNewLongitude(MundPosArray[1]);
   DecimalValue := TDecimalValue.Create(MundPosArray[1]);
+  Asc := MundPosArray[1];
   SGHouses.Rows[1].Add('Asc');
   SGHouses.Rows[1].Add(SignDmsValue.Text);
   SGHouses.Rows[1].Add(SignGlyphsArray[SignDmsValue.SignId]);
   SGHouses.Rows[1].Add(DecimalValue.Text);
+end;
+
+procedure TFormChartsPositions.ShowPrevIncarnation;
+var
+  prevReincarnation: TPrevReincarnation;
+  prevReincDateTime: TDateTimeDto;
+begin
+  prevReincarnation:= TPrevReincarnation.Create;
+  prevReincDateTime:= prevReincarnation.Calculate(Moon, Asc, FDateTimeDto);
+  LblPrevIncarnationResult.Caption:= IntToStr(prevReincDateTime.Year) + '-' +
+                                      IntToStr(prevReincDateTime.Month) + '-' +
+                                      IntToStr(prevReincDateTime.Day) + ' ' +
+                                      TimeTextConstructor.convert(prevReincDateTime.Time);
 end;
 
 

@@ -30,6 +30,9 @@ TSeFrontend = class        // singleton based on last example at http://wiki.fre
    { Checks if a data is valid, takes calendar and leap years into account.}
    function CheckDate(PDay, PMonth, PYear: Integer): Boolean;
 
+   { Returns the date for a Julian Day number. Calendar is always Gregorian. }
+   function RevJulDay(PJd: Double): TDateTimeDto;
+
    { Calculate true value of obliquity (Epsilon) }
    function CalculateObliquity(PJulianDay:Double): Double;
 
@@ -83,6 +86,16 @@ begin
   GregorianFlag:=1;
   Result := swe_julday(DateTime.Year, DateTime.Month, DateTime.Day, DateTime.Time, GregorianFlag);
 end;
+
+function TSeFrontend.RevJulDay(PJd: Double): TDateTimeDto;
+var
+   year, month, day: Integer;
+   time: Double;
+begin
+   swe_revjul(PJd, 1, year, month, day, time);
+   Result:= TDateTimeDto.Create(year, month, day, time);
+end;
+
 
 function TSeFrontend.CheckDate(PDay, PMonth, PYear: Integer): Boolean;
 var

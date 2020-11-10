@@ -8,7 +8,8 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, start, XSharedDictionary, BeSwissDelphi, BeSharedSeFrontend, UiGraph,
-  UiChartsPositions, Validators, Domain, CriticalPoint, UiCpResult
+  UiChartsPositions, Validators, Domain, CriticalPoint, UiCpResult,
+  Reincarnation, Utils
   { you can add units after this };
 
 {$R *.res}

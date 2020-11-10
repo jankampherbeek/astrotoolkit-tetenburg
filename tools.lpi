@@ -37,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="15">
       <Unit0>
         <Filename Value="tools.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -104,9 +104,20 @@
         <Filename Value="uicpresult.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormCpResult"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UiCpResult"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="reincarnation.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Reincarnation"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="utils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Utils"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
