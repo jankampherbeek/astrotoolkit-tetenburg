@@ -13,7 +13,14 @@ type
       function Calculate(PMoon, PAsc: Double; PDateTime: TDateTimeDto): TDateTimeDto;
     private
       function CalcTimeSpanInDays(PFirstDate, PLastDate: TDateTimeDto): Double;
+  end;
 
+  TFutureReincarnation = class
+    public
+      function Calculate(PSun, PMc: Double; PDateTimeBirth, PDateTimeDeath: TDateTimeDto): TDateTimeDto;
+    private
+      function CalcAgeAtDeath(PDateTimeBirth, PDateTimeDeath: TDateTimeDto): Integer;
+      function CalcTimeSpanInDays(PFirstDate, PLastDate: TDateTimeDto): Double;
   end;
 
 implementation
@@ -47,6 +54,7 @@ begin
   end;
   baseFractDate := PDateTime.Year - moonAscSum;                       // subtract moonAscSum from birth year
   baseYearStart:= trunc(baseFractDate);                               // integer part is baseYearStart
+  if (moonAscOverFlow) then Inc(baseYearStart);
   yearFractionIn360Days := (baseFractDate - baseYearStart) * 360.0;   // fractional part of base year, based on a year of 360 days
   daysInBirthYear:= CalcTimeSpanInDays(TDateTimeDto.Create(PDateTime.Year, 1, 1, 0.0), PDateTime);
   baseYearStartDateTime:= TDateTimeDto.Create(baseYearStart, 1, 1, 0.0);
@@ -56,7 +64,58 @@ end;
 
 function TPrevReincarnation.CalcTimeSpanInDays(PFirstDate, PLastDate: TDateTimeDto): Double;
 begin
+     result := seFrontend.JulDay(PLastDate) - seFrontend.JulDay(PFirstDate);
+end;
 
+
+{ TFutureReincarnation }
+
+function TFutureReincarnation.Calculate(PSun, PMc: Double; PDateTimeBirth, PDateTimeDeath: TDateTimeDto): TDateTimeDto;
+var
+  sunMcOverflow: Boolean;
+  sunMcSum, age, futureFractYear: Double;
+  yearFractionIn360Days : Double;
+  birthFractYear: Double;
+  jdTotal: Double;
+  futureIntYear: Integer;
+  tempDate : TDateTimeDto;
+  timeTextConstructor: TTimeTextConstructor;
+  daysInBirthYear : Double;
+begin
+   seFrontend := TSeFrontend.Create;
+   timeTextConstructor:= TTimeTextConstructor.Create;
+   sunMcOverflow:= false;
+   sunMcSum:= PSun + PMc;
+   if (sunMcSum >= 360.0) then begin
+     sunMcSum:= sunMcSum - 360.0;
+     sunMcOverflow:= true;
+   end;
+   daysInBirthYear:= CalcTimeSpanInDays(TDateTimeDto.Create(PDateTimeBirth.Year, 1, 1, 0.0), PDateTimeBirth);
+   age := CalcAgeAtDeath(PDateTimeBirth, PDateTimeDeath);
+   futureFractYear:= PDateTimeBirth.Year + age + sunMcSum;
+   futureIntYear:= Round(Int(futureFractYear));
+   yearFractionIn360Days:= ((futureFractYear - futureIntYear) * 360.0) + daysInBirthYear * 360.0;
+   tempDate:= TDateTimeDto.Create(futureIntYear,1,1,0.0);
+   jdTotal:= seFrontend.JulDay(tempDate) + yearFractionIn360Days;
+   result:= seFrontend.RevJulDay(jdTotal);
+end;
+
+function TFutureReincarnation.CalcAgeAtDeath(PDateTimeBirth, PDateTimeDeath: TDateTimeDto): Integer;
+var
+   age: Integer;
+
+begin
+   age := PDateTimeDeath.Year - PDateTimeBirth.Year;
+   if (PDateTimeDeath.Month <= PDateTimeBirth.Month) then dec(age)
+   else if (PDateTimeDeath.Month = PDateTimeBirth.Month) then begin
+     if (PDateTimeDeath.Day <= PDateTimeBirth.Day) then dec(age)
+     else if (PDateTimeDeath.Time < PDateTimeBirth.Time) then dec(age)
+   end;
+   result:= age;
+end;
+
+function TFutureReincarnation.CalcTimeSpanInDays(PFirstDate, PLastDate: TDateTimeDto): Double;
+begin
      result := seFrontend.JulDay(PLastDate) - seFrontend.JulDay(PFirstDate);
 end;
 

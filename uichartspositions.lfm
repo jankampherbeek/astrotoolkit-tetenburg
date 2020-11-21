@@ -1,7 +1,7 @@
 object FormChartsPositions: TFormChartsPositions
-  Left = 750
+  Left = 689
   Height = 574
-  Top = 214
+  Top = 246
   Width = 734
   Caption = 'Enigma-Charts-Positions'
   ClientHeight = 574
@@ -11,13 +11,13 @@ object FormChartsPositions: TFormChartsPositions
   LCLVersion = '2.0.2.0'
   object LblTitle: TLabel
     Left = 16
-    Height = 48
-    Top = 12
-    Width = 259
+    Height = 36
+    Top = 24
+    Width = 185
     Caption = 'Posities radix'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clOlive
-    Font.Height = -43
+    Font.Height = -32
     Font.Name = 'Liberation Sans'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
@@ -37,7 +37,7 @@ object FormChartsPositions: TFormChartsPositions
     Left = 16
     Height = 296
     Top = 80
-    Width = 280
+    Width = 272
     AlternateColor = clMoneyGreen
     BorderStyle = bsNone
     ColCount = 4
@@ -71,7 +71,7 @@ object FormChartsPositions: TFormChartsPositions
         Font.Name = 'EnigmaAstrology'
         Font.Pitch = fpVariable
         Font.Quality = fqAntialiased
-        MaxSize = 20
+        MaxSize = 12
         Title.Font.CharSet = ANSI_CHARSET
         Title.Font.Height = -13
         Title.Font.Name = 'Liberation Sans'
@@ -138,9 +138,9 @@ object FormChartsPositions: TFormChartsPositions
   end
   object SGHouses: TStringGrid
     Left = 16
-    Height = 96
+    Height = 88
     Top = 392
-    Width = 280
+    Width = 272
     AlternateColor = clMoneyGreen
     BorderStyle = bsNone
     ColCount = 4
@@ -220,9 +220,9 @@ object FormChartsPositions: TFormChartsPositions
     TabOrder = 3
   end
   object LblCritPoint: TLabel
-    Left = 400
+    Left = 368
     Height = 36
-    Top = 16
+    Top = 24
     Width = 176
     Caption = 'Kritieke punt'
     Font.CharSet = ANSI_CHARSET
@@ -235,28 +235,28 @@ object FormChartsPositions: TFormChartsPositions
     ParentFont = False
   end
   object EditYearCp: TEdit
-    Left = 400
+    Left = 368
     Height = 23
     Top = 104
     Width = 56
     TabOrder = 4
   end
   object EditMonthCp: TEdit
-    Left = 464
+    Left = 432
     Height = 23
     Top = 104
     Width = 24
     TabOrder = 5
   end
   object EditDayCp: TEdit
-    Left = 496
+    Left = 464
     Height = 23
     Top = 104
     Width = 24
     TabOrder = 6
   end
   object LblDate: TLabel
-    Left = 400
+    Left = 368
     Height = 15
     Top = 87
     Width = 102
@@ -264,28 +264,28 @@ object FormChartsPositions: TFormChartsPositions
     ParentColor = False
   end
   object EditHourCp: TEdit
-    Left = 536
+    Left = 504
     Height = 23
     Top = 104
     Width = 24
     TabOrder = 7
   end
   object EditMinuteCp: TEdit
-    Left = 568
+    Left = 536
     Height = 23
     Top = 104
     Width = 24
     TabOrder = 8
   end
   object EditSecondCp: TEdit
-    Left = 600
+    Left = 568
     Height = 23
     Top = 104
     Width = 24
     TabOrder = 9
   end
   object LblTime: TLabel
-    Left = 536
+    Left = 504
     Height = 15
     Top = 88
     Width = 75
@@ -293,7 +293,7 @@ object FormChartsPositions: TFormChartsPositions
     ParentColor = False
   end
   object BtnCalcCritPoint: TButton
-    Left = 400
+    Left = 368
     Height = 25
     Top = 144
     Width = 75
@@ -302,16 +302,17 @@ object FormChartsPositions: TFormChartsPositions
     TabOrder = 10
   end
   object LblStatus: TLabel
-    Left = 400
-    Height = 1
-    Top = 528
-    Width = 1
+    Left = 368
+    Height = 15
+    Top = 465
+    Width = 9
+    Caption = '...'
     ParentColor = False
   end
   object LblPrevIncarnation: TLabel
-    Left = 400
+    Left = 368
     Height = 36
-    Top = 224
+    Top = 200
     Width = 313
     Caption = 'Voorgaande incarnatie'
     Font.CharSet = ANSI_CHARSET
@@ -324,9 +325,99 @@ object FormChartsPositions: TFormChartsPositions
     ParentFont = False
   end
   object LblPrevIncarnationResult: TLabel
-    Left = 408
+    Left = 368
     Height = 15
-    Top = 280
+    Top = 256
+    Width = 9
+    Caption = '...'
+    ParentColor = False
+  end
+  object LblFutureIncarnation: TLabel
+    Left = 368
+    Height = 36
+    Top = 296
+    Width = 275
+    Caption = 'Volgende incarnatie'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clOlive
+    Font.Height = -32
+    Font.Name = 'Liberation Sans'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object EditDeathYear: TEdit
+    Left = 368
+    Height = 23
+    Top = 377
+    Width = 56
+    TabOrder = 11
+  end
+  object EditDeathMonth: TEdit
+    Left = 432
+    Height = 23
+    Top = 377
+    Width = 24
+    TabOrder = 12
+  end
+  object EditDeathDay: TEdit
+    Left = 464
+    Height = 23
+    Top = 377
+    Width = 24
+    TabOrder = 13
+  end
+  object LblDeathDate: TLabel
+    Left = 368
+    Height = 15
+    Top = 360
+    Width = 102
+    Caption = 'Jaar, maand en dag'
+    ParentColor = False
+  end
+  object EditDeathHour: TEdit
+    Left = 504
+    Height = 23
+    Top = 377
+    Width = 24
+    TabOrder = 14
+  end
+  object EditDeathMinute: TEdit
+    Left = 536
+    Height = 23
+    Top = 377
+    Width = 24
+    TabOrder = 15
+  end
+  object EditDeathSecond: TEdit
+    Left = 568
+    Height = 23
+    Top = 377
+    Width = 24
+    TabOrder = 16
+  end
+  object LblDeathTime: TLabel
+    Left = 504
+    Height = 15
+    Top = 361
+    Width = 75
+    Caption = 'Uren, min, sec'
+    ParentColor = False
+  end
+  object BtnCalcFutureInc: TButton
+    Left = 368
+    Height = 25
+    Top = 417
+    Width = 75
+    Caption = 'Bereken'
+    OnClick = BtnCalcFutureIncClick
+    TabOrder = 17
+  end
+  object LblFutureIncarnationResult: TLabel
+    Left = 504
+    Height = 15
+    Top = 417
     Width = 9
     Caption = '...'
     ParentColor = False
