@@ -5,7 +5,7 @@ unit start;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ActnList,
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ActnList, HelpIntfs,
   UiGraph, UiChartsPositions, Domain;
 
 type
@@ -15,8 +15,6 @@ type
 TForm1 = class(TForm)
   BtnCalc: TButton;
   BtnClose: TButton;
-  BtnNew: TButton;
-  BtnHelp: TButton;
   EditDateMonth: TEdit;
   EditDateDay: TEdit;
   EditDateYear: TEdit;
@@ -46,6 +44,7 @@ TForm1 = class(TForm)
   RGLongitude: TRadioGroup;
   procedure BtnCalcClick;
   procedure BtnCloseClick;
+  procedure BtnHelpClick(Sender: TObject);
   procedure FormShow;
 
 private
@@ -71,6 +70,9 @@ implementation
 
 uses
   XSharedDictionary, Validators;
+
+const
+  HELP_TXT = 'HTML/DataInvoer.html';
 
 var
   Name, LocationName: String;
@@ -232,6 +234,11 @@ end;
 procedure TForm1.BtnCloseClick;
 begin
   Close;
+end;
+
+procedure TForm1.BtnHelpClick(Sender: TObject);
+begin
+  ShowHelpOrErrorForKeyword('', HELP_TXT);
 end;
 
 

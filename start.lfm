@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 1268
+  Left = 850
   Height = 430
-  Top = 253
+  Top = 303
   Width = 532
   Caption = 'Charts Input'
   ClientHeight = 430
@@ -65,7 +65,7 @@ object Form1: TForm1
     Width = 32
     NumbersOnly = True
     TabOrder = 2
-    Text = '54'
+    Text = '50'
   end
   object EditLongitudeSeconds: TEdit
     Left = 85
@@ -120,7 +120,7 @@ object Form1: TForm1
     Width = 31
     NumbersOnly = True
     TabOrder = 5
-    Text = '52'
+    Text = '53'
   end
   object EditLatitudeMinutes: TEdit
     Left = 279
@@ -129,7 +129,7 @@ object Form1: TForm1
     Width = 31
     NumbersOnly = True
     TabOrder = 6
-    Text = '13'
+    Text = '17'
   end
   object EditLatitudeSeconds: TEdit
     Left = 316
@@ -192,7 +192,7 @@ object Form1: TForm1
     Width = 33
     NumbersOnly = True
     TabOrder = 10
-    Text = '1'
+    Text = '5'
   end
   object EditDateDay: TEdit
     Left = 123
@@ -201,16 +201,16 @@ object Form1: TForm1
     Width = 31
     NumbersOnly = True
     TabOrder = 11
-    Text = '29'
+    Text = '12'
   end
   object EditDateYear: TEdit
-    Left = 15
+    Left = 16
     Height = 23
     Top = 253
     Width = 65
     NumbersOnly = True
     TabOrder = 9
-    Text = '1953'
+    Text = '1946'
   end
   object LblTime: TLabel
     Left = 245
@@ -227,7 +227,7 @@ object Form1: TForm1
     Width = 32
     NumbersOnly = True
     TabOrder = 12
-    Text = '7'
+    Text = '11'
   end
   object EditTimeMinute: TEdit
     Left = 280
@@ -236,7 +236,7 @@ object Form1: TForm1
     Width = 32
     NumbersOnly = True
     TabOrder = 13
-    Text = '37'
+    Text = '46'
   end
   object EditTimeSecond: TEdit
     Left = 316
@@ -247,14 +247,6 @@ object Form1: TForm1
     TabOrder = 14
     Text = '30'
   end
-  object BtnHelp: TButton
-    Left = 14
-    Height = 25
-    Top = 392
-    Width = 75
-    Caption = 'Help'
-    TabOrder = 16
-  end
   object LblStatus: TLabel
     Left = 13
     Height = 15
@@ -264,14 +256,14 @@ object Form1: TForm1
     ParentColor = False
   end
   object BtnClose: TButton
-    Left = 104
+    Left = 363
     Height = 25
     Top = 392
     Width = 75
     Cancel = True
     Caption = 'Sluiten'
     OnClick = BtnCloseClick
-    TabOrder = 17
+    TabOrder = 16
   end
   object EditName: TEdit
     Left = 13
@@ -279,7 +271,7 @@ object Form1: TForm1
     Top = 144
     Width = 507
     TabOrder = 0
-    Text = 'jk'
+    Text = 'Henk'
   end
   object LblName: TLabel
     Left = 13
@@ -299,13 +291,5 @@ object Form1: TForm1
     Font.Height = -19
     ParentColor = False
     ParentFont = False
-  end
-  object BtnNew: TButton
-    Left = 363
-    Height = 25
-    Top = 392
-    Width = 75
-    Caption = 'Opnieuw'
-    TabOrder = 18
   end
 end

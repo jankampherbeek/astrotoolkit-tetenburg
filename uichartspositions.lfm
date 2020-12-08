@@ -24,15 +24,6 @@ object FormChartsPositions: TFormChartsPositions
     ParentColor = False
     ParentFont = False
   end
-  object BtnClose: TButton
-    Left = 1021
-    Height = 25
-    Top = 752
-    Width = 75
-    Caption = 'Close'
-    OnClick = BtnCloseClick
-    TabOrder = 0
-  end
   object SGPositions: TStringGrid
     Left = 16
     Height = 296
@@ -107,7 +98,7 @@ object FormChartsPositions: TFormChartsPositions
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goAutoAddRows, goSmoothScroll]
     ParentFont = False
     RowCount = 13
-    TabOrder = 1
+    TabOrder = 0
     TabStop = False
     TitleFont.CharSet = ANSI_CHARSET
     TitleFont.Height = -12
@@ -193,7 +184,7 @@ object FormChartsPositions: TFormChartsPositions
     Font.Name = 'Liberation Mono'
     ParentFont = False
     RowCount = 4
-    TabOrder = 2
+    TabOrder = 1
     TabStop = False
     TitleFont.Height = -12
     TitleFont.Name = 'Liberation Mono'
@@ -209,15 +200,6 @@ object FormChartsPositions: TFormChartsPositions
       22
       22
     )
-  end
-  object BtnHelp: TButton
-    Left = 16
-    Height = 25
-    Top = 528
-    Width = 75
-    Caption = 'Help'
-    OnClick = BtnCloseClick
-    TabOrder = 3
   end
   object LblCritPoint: TLabel
     Left = 368
@@ -239,21 +221,21 @@ object FormChartsPositions: TFormChartsPositions
     Height = 23
     Top = 104
     Width = 56
-    TabOrder = 4
+    TabOrder = 2
   end
   object EditMonthCp: TEdit
     Left = 432
     Height = 23
     Top = 104
     Width = 24
-    TabOrder = 5
+    TabOrder = 3
   end
   object EditDayCp: TEdit
     Left = 464
     Height = 23
     Top = 104
     Width = 24
-    TabOrder = 6
+    TabOrder = 4
   end
   object LblDate: TLabel
     Left = 368
@@ -268,21 +250,21 @@ object FormChartsPositions: TFormChartsPositions
     Height = 23
     Top = 104
     Width = 24
-    TabOrder = 7
+    TabOrder = 5
   end
   object EditMinuteCp: TEdit
     Left = 536
     Height = 23
     Top = 104
     Width = 24
-    TabOrder = 8
+    TabOrder = 6
   end
   object EditSecondCp: TEdit
     Left = 568
     Height = 23
     Top = 104
     Width = 24
-    TabOrder = 9
+    TabOrder = 7
   end
   object LblTime: TLabel
     Left = 504
@@ -299,7 +281,7 @@ object FormChartsPositions: TFormChartsPositions
     Width = 75
     Caption = 'Bereken'
     OnClick = BtnCalcCritPointClick
-    TabOrder = 10
+    TabOrder = 8
   end
   object LblStatus: TLabel
     Left = 368
@@ -352,21 +334,24 @@ object FormChartsPositions: TFormChartsPositions
     Height = 23
     Top = 377
     Width = 56
-    TabOrder = 11
+    TabOrder = 9
+    Text = '1990'
   end
   object EditDeathMonth: TEdit
     Left = 432
     Height = 23
     Top = 377
     Width = 24
-    TabOrder = 12
+    TabOrder = 10
+    Text = '9'
   end
   object EditDeathDay: TEdit
     Left = 464
     Height = 23
     Top = 377
     Width = 24
-    TabOrder = 13
+    TabOrder = 11
+    Text = '24'
   end
   object LblDeathDate: TLabel
     Left = 368
@@ -381,21 +366,24 @@ object FormChartsPositions: TFormChartsPositions
     Height = 23
     Top = 377
     Width = 24
-    TabOrder = 14
+    TabOrder = 12
+    Text = '11'
   end
   object EditDeathMinute: TEdit
     Left = 536
     Height = 23
     Top = 377
     Width = 24
-    TabOrder = 15
+    TabOrder = 13
+    Text = '32'
   end
   object EditDeathSecond: TEdit
     Left = 568
     Height = 23
     Top = 377
     Width = 24
-    TabOrder = 16
+    TabOrder = 14
+    Text = '33'
   end
   object LblDeathTime: TLabel
     Left = 504
@@ -412,7 +400,7 @@ object FormChartsPositions: TFormChartsPositions
     Width = 75
     Caption = 'Bereken'
     OnClick = BtnCalcFutureIncClick
-    TabOrder = 17
+    TabOrder = 15
   end
   object LblFutureIncarnationResult: TLabel
     Left = 504
@@ -421,5 +409,14 @@ object FormChartsPositions: TFormChartsPositions
     Width = 9
     Caption = '...'
     ParentColor = False
+  end
+  object BtnClose: TButton
+    Left = 640
+    Height = 25
+    Top = 528
+    Width = 75
+    Caption = 'Sluiten'
+    OnClick = BtnCloseClick
+    TabOrder = 16
   end
 end

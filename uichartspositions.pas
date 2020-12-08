@@ -24,9 +24,8 @@ type
   { Shows positions and selections for further use. }
   TFormChartsPositions = class(TForm)
     BtnCalcFutureInc: TButton;
-    BtnClose: TButton;
-    BtnHelp: TButton;
     BtnCalcCritPoint: TButton;
+    BtnClose: TButton;
     EditDeathDay: TEdit;
     EditDeathHour: TEdit;
     EditDeathMinute: TEdit;
@@ -54,7 +53,8 @@ type
     SGHouses: TStringGrid;
     SGPositions: TStringGrid;
     procedure BtnCalcFutureIncClick(Sender: TObject);
-    procedure BtnCloseClick;
+    procedure BtnCloseClick(Sender: TObject);
+    procedure BtnClosexClick;
     procedure BtnCalcCritPointClick(Sender: TObject);
     procedure FormCreate;
     procedure FormShow;
@@ -121,7 +121,7 @@ const
   ERROR_DATE = 'Corrigeer de invoer voor de datum.';
   ERROR_TIME = 'Corrigeer de invoer voor de tijd.';
 
-procedure TFormChartsPositions.BtnCloseClick;
+procedure TFormChartsPositions.BtnClosexClick;
 begin
   Close;
 end;
@@ -145,6 +145,11 @@ begin
     FDeathDateTimeDto := TDateTimeDto.Create(Date.Year, Date.Month, Date.Day, Time.DecimalTime);
     ShowFutureIncarnation;
   end;
+end;
+
+procedure TFormChartsPositions.BtnCloseClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TFormChartsPositions.BtnCalcCritPointClick(Sender: TObject);
