@@ -8,7 +8,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi, Validators, UiCpResult, Utils;
+  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi, Validators, UiCpResult, Utils, CriticalPoint;
 
 type
 
@@ -38,6 +38,7 @@ type
     EditMinuteCp: TEdit;
     EditSecondCp: TEdit;
     EditDeathYear: TEdit;
+    LblCritPointGlyph: TLabel;
     LblCritPointValue: TLabel;
     LblFutureIncarnationResult: TLabel;
     LblFutureIncarnation: TLabel;
@@ -71,6 +72,8 @@ type
     procedure InitValues;
     procedure ProcessDateCp;
     procedure ProcessTimeCp;
+    procedure ConstructPositionText;
+    function ConstructDateTimeText(PEventDateTime: TDateTimeDto): String;
     procedure ProcessDateOfDeath;
     procedure ProcessTimeOfDeath;
     procedure DefineLookandFeel;
@@ -154,6 +157,8 @@ begin
 end;
 
 procedure TFormChartsPositions.BtnCalcCritPointClick(Sender: TObject);
+var
+  dateTimeText: String;
 begin
   LblStatus.Color := Styling.DataBgColor;
   LblStatus.Caption := 'Maak je keuze';
@@ -170,7 +175,12 @@ begin
   else
   begin
     FEventDateTimeDto := TDateTimeDto.Create(Date.Year, Date.Month, Date.Day, Time.DecimalTime);
-    FormCpResult.showModal;
+    dateTimeText:= constructDateTimeText(FEventDateTimeDto);
+//
+//    LblValueDateTime.Caption:= dateTimeText;
+    ConstructPositionText;
+
+    //FormCpResult.showModal;
   end;
 end;
 
@@ -195,6 +205,39 @@ begin
     EditDayCp.Color := clYellow;
   end;
 end;
+
+procedure TFormChartsPositions.ConstructPositionText;
+var
+  calculator: TCriticalPointCalculator;
+  signDmsValue: TSignDmsValue;
+  radixDateTimeDto: TDateTimeDto;
+  radixMc: Double;
+begin
+  calculator:= TCriticalPointCalculator.Create;
+  radixDateTimeDto:= FormChartsPositions.DateTimeDto;
+  radixMc := FormChartsPositions.Mc;
+  //solarSpeed:= FormChartsPositions.SolarSpeed;
+  //geoLat:= FormChartsPositions.GeoLat;
+
+  signDmsValue := calculator.Calculate(radixDateTimeDto,
+                                       FEventDateTimeDto,
+                                       radixMc,
+                                       solarSpeed,
+                                       geoLat);
+  LblCritPointValue.Caption:= signDmsValue.Text;
+  lblCritPointGlyph.Caption:= SignGlyphsArray[signDmsValue.SignId - 1];
+end;
+
+function TFormChartsPositions.ConstructDateTimeText(PEventDateTime: TDateTimeDto): String;
+var
+  dateTimeText: String;
+begin
+  dateTimeText := IntToStr(PEventDateTime.Year) + '-' + IntToStr(PEventDateTime.Month) + '-' +
+                  IntToStr(PEventDateTime.Day) + ' Tijd (UT, decimaal): ' + FloatToStr(PEventDateTime.Time);
+  Result:= dateTimeText;
+end;
+
+
 
 procedure TFormChartsPositions.ProcessDateOfDeath;
 var

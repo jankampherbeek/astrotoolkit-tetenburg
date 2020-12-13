@@ -3,7 +3,7 @@ object FormChartsPositions: TFormChartsPositions
   Height = 574
   Top = 301
   Width = 734
-  Caption = 'Enigma-Charts-Positions'
+  Caption = 'Resultaten'
   ClientHeight = 574
   ClientWidth = 734
   OnCreate = FormCreate
@@ -418,10 +418,23 @@ object FormChartsPositions: TFormChartsPositions
   end
   object LblCritPointValue: TLabel
     Left = 504
-    Height = 15
+    Height = 1
     Top = 152
-    Width = 91
-    Caption = 'LblCritPointValue'
+    Width = 1
     ParentColor = False
+  end
+  object LblCritPointGlyph: TLabel
+    Left = 568
+    Height = 1
+    Top = 152
+    Width = 1
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'EnigmaAstrology'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
   end
 end

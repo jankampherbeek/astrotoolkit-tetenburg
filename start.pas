@@ -28,6 +28,7 @@ TForm1 = class(TForm)
   EditTimeMinute: TEdit;
   EditLongitudeSeconds: TEdit;
   EditTimeSecond: TEdit;
+  LblManual: TLabel;
   lblEnterData: TLabel;
   LblStatus: TLabel;
   LblTime: TLabel;

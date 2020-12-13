@@ -13,8 +13,8 @@ object Form1: TForm1
     Left = 13
     Height = 44
     Top = 8
-    Width = 503
-    Caption = 'Astrologie Toolkit - Tetenburg'
+    Width = 335
+    Caption = 'Tetenburg software'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clOlive
     Font.Height = -40
@@ -56,16 +56,14 @@ object Form1: TForm1
     Width = 32
     NumbersOnly = True
     TabOrder = 1
-    Text = '6'
   end
   object EditLongitudeMinutes: TEdit
-    Left = 49
+    Left = 48
     Height = 23
     Top = 205
     Width = 32
     NumbersOnly = True
     TabOrder = 2
-    Text = '50'
   end
   object EditLongitudeSeconds: TEdit
     Left = 85
@@ -120,7 +118,6 @@ object Form1: TForm1
     Width = 31
     NumbersOnly = True
     TabOrder = 5
-    Text = '53'
   end
   object EditLatitudeMinutes: TEdit
     Left = 279
@@ -129,7 +126,6 @@ object Form1: TForm1
     Width = 31
     NumbersOnly = True
     TabOrder = 6
-    Text = '17'
   end
   object EditLatitudeSeconds: TEdit
     Left = 316
@@ -192,7 +188,6 @@ object Form1: TForm1
     Width = 33
     NumbersOnly = True
     TabOrder = 10
-    Text = '5'
   end
   object EditDateDay: TEdit
     Left = 123
@@ -201,16 +196,14 @@ object Form1: TForm1
     Width = 31
     NumbersOnly = True
     TabOrder = 11
-    Text = '12'
   end
   object EditDateYear: TEdit
-    Left = 16
+    Left = 13
     Height = 23
     Top = 253
     Width = 65
     NumbersOnly = True
     TabOrder = 9
-    Text = '1946'
   end
   object LblTime: TLabel
     Left = 245
@@ -227,7 +220,6 @@ object Form1: TForm1
     Width = 32
     NumbersOnly = True
     TabOrder = 12
-    Text = '11'
   end
   object EditTimeMinute: TEdit
     Left = 280
@@ -236,7 +228,6 @@ object Form1: TForm1
     Width = 32
     NumbersOnly = True
     TabOrder = 13
-    Text = '46'
   end
   object EditTimeSecond: TEdit
     Left = 316
@@ -245,7 +236,6 @@ object Form1: TForm1
     Width = 32
     NumbersOnly = True
     TabOrder = 14
-    Text = '30'
   end
   object LblStatus: TLabel
     Left = 13
@@ -271,7 +261,6 @@ object Form1: TForm1
     Top = 144
     Width = 507
     TabOrder = 0
-    Text = 'Henk'
   end
   object LblName: TLabel
     Left = 13
@@ -289,6 +278,22 @@ object Form1: TForm1
     Caption = 'Voer de gegevens in voor de betreffende horoscoop'
     Font.Color = clOlive
     Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object LblManual: TLabel
+    Left = 16
+    Height = 15
+    Top = 96
+    Width = 369
+    Caption = 'Zie het document Tetenburg.pdf voor informatie over dit programma.'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -12
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
