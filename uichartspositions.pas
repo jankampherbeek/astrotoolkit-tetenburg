@@ -38,6 +38,7 @@ type
     EditMinuteCp: TEdit;
     EditSecondCp: TEdit;
     EditDeathYear: TEdit;
+    LblCritPointValue: TLabel;
     LblFutureIncarnationResult: TLabel;
     LblFutureIncarnation: TLabel;
     LblDeathDate: TLabel;
@@ -338,7 +339,6 @@ begin
 
   SignDmsValue.SetNewLongitude(MundPosArray[0]);
   DecimalValue := TDecimalValue.Create(MundPosArray[0]);
-  //Mc := MundPosArray[0];
   SGHouses.Rows[0].Add('MC');
   SGHouses.Rows[0].Add(SignDmsValue.Text);
   SGHouses.Rows[0].Add(SignGlyphsArray[SignDmsValue.SignId - 1]);
@@ -429,13 +429,6 @@ procedure TFormChartsPositions.DefineLookandFeel;
 begin
   Styling := TStyling.Create;
   FormChartsPositions.Color := Styling.DataBgColor;
-  // Labels
-  //LblTitle.Font:= Styling.DataFontSubHeading;
-  //LblName.Font:= Styling.DataFontText;
-  //LblLongitude.Font:= Styling.DataFontText;
-  //LblLatitude.Font:= Styling.DataFontText;
-  //LblDate.Font:= Styling.DataFontText;
-  //LblTime.Font:= Styling.DataFontText;
   LblStatus.Color := Styling.DataBgColor;
 end;
 

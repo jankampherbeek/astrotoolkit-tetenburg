@@ -81,7 +81,6 @@ var
   tempDate : TDateTimeDto;
   timeTextConstructor: TTimeTextConstructor;
   daysInBirthYear, daysInDeathYear : Double;
-  //birthYearFraction, deathYearFraction: Double;
 begin
    seFrontend := TSeFrontend.Create;
    timeTextConstructor:= TTimeTextConstructor.Create;
@@ -93,17 +92,13 @@ begin
    end;
    daysInBirthYear:= CalcTimeSpanInDays(TDateTimeDto.Create(PDateTimeBirth.Year, 1, 1, 0.0), PDateTimeBirth);
    daysInDeathYear:= CalcTimeSpanInDays(TDateTimeDto.Create(PDateTimeDeath.Year, 1, 1, 0.0), PDateTimeDeath);
-   //birthYearFraction:= daysInBirthYear / 360.0;
-   //deathYearFraction:= daysInDeathYear / 360.0;
    age := CalcAgeAtDeath(PDateTimeBirth, PDateTimeDeath);
    futureFractYear:= PDateTimeBirth.Year + age + sunMcSum;
    futureIntYear:= Round(Int(futureFractYear));
-   //yearFractionIn360Days:= ((futureFractYear - futureIntYear) * 360.0) + birthYearFraction + deathYearFraction;
    yearFractionIn360Days:= ((futureFractYear - futureIntYear) * 360.0);
    if (sunMcOverFlow) then Inc(futureIntYear);
    tempDate:= TDateTimeDto.Create(futureIntYear,1,1,0.0);
-   //jdTotal:= seFrontend.JulDay(tempDate) + yearFractionIn360Days;
-      jdTotal:= seFrontend.JulDay(tempDate) + yearFractionIn360Days + daysInBirthYear + daysInDeathYear;
+   jdTotal:= seFrontend.JulDay(tempDate) + yearFractionIn360Days + daysInBirthYear + daysInDeathYear;
    result:= seFrontend.RevJulDay(jdTotal);
 end;
 

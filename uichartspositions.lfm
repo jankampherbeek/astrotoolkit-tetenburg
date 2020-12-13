@@ -1,7 +1,7 @@
 object FormChartsPositions: TFormChartsPositions
-  Left = 689
+  Left = 730
   Height = 574
-  Top = 246
+  Top = 301
   Width = 734
   Caption = 'Enigma-Charts-Positions'
   ClientHeight = 574
@@ -285,10 +285,9 @@ object FormChartsPositions: TFormChartsPositions
   end
   object LblStatus: TLabel
     Left = 368
-    Height = 15
+    Height = 1
     Top = 465
-    Width = 9
-    Caption = '...'
+    Width = 1
     ParentColor = False
   end
   object LblPrevIncarnation: TLabel
@@ -308,10 +307,9 @@ object FormChartsPositions: TFormChartsPositions
   end
   object LblPrevIncarnationResult: TLabel
     Left = 368
-    Height = 15
+    Height = 1
     Top = 256
-    Width = 9
-    Caption = '...'
+    Width = 1
     ParentColor = False
   end
   object LblFutureIncarnation: TLabel
@@ -404,10 +402,9 @@ object FormChartsPositions: TFormChartsPositions
   end
   object LblFutureIncarnationResult: TLabel
     Left = 504
-    Height = 15
+    Height = 1
     Top = 417
-    Width = 9
-    Caption = '...'
+    Width = 1
     ParentColor = False
   end
   object BtnClose: TButton
@@ -418,5 +415,13 @@ object FormChartsPositions: TFormChartsPositions
     Caption = 'Sluiten'
     OnClick = BtnCloseClick
     TabOrder = 16
+  end
+  object LblCritPointValue: TLabel
+    Left = 504
+    Height = 15
+    Top = 152
+    Width = 91
+    Caption = 'LblCritPointValue'
+    ParentColor = False
   end
 end
