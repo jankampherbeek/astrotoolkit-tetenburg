@@ -8,7 +8,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi, Validators, UiCpResult, Utils, CriticalPoint;
+  Grids, Domain, BeSharedSeFrontend, BeSwissDelphi, Validators, Utils, CriticalPoint;
 
 type
 
@@ -107,6 +107,7 @@ var
   ErrorText: string;
   Date: TValidatedDateDto;
   Time: TValidatedTimeDto;
+  DateTimetext: String;
   Mc, Asc, Moon, Sun: Double;
   TimeTextConstructor: TTimeTextConstructor;
 
@@ -157,8 +158,6 @@ begin
 end;
 
 procedure TFormChartsPositions.BtnCalcCritPointClick(Sender: TObject);
-var
-  dateTimeText: String;
 begin
   LblStatus.Color := Styling.DataBgColor;
   LblStatus.Caption := 'Maak je keuze';
@@ -176,11 +175,7 @@ begin
   begin
     FEventDateTimeDto := TDateTimeDto.Create(Date.Year, Date.Month, Date.Day, Time.DecimalTime);
     dateTimeText:= constructDateTimeText(FEventDateTimeDto);
-//
-//    LblValueDateTime.Caption:= dateTimeText;
     ConstructPositionText;
-
-    //FormCpResult.showModal;
   end;
 end;
 
@@ -216,9 +211,6 @@ begin
   calculator:= TCriticalPointCalculator.Create;
   radixDateTimeDto:= FormChartsPositions.DateTimeDto;
   radixMc := FormChartsPositions.Mc;
-  //solarSpeed:= FormChartsPositions.SolarSpeed;
-  //geoLat:= FormChartsPositions.GeoLat;
-
   signDmsValue := calculator.Calculate(radixDateTimeDto,
                                        FEventDateTimeDto,
                                        radixMc,

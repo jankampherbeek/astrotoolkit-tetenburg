@@ -190,6 +190,7 @@ begin
   DateInput:= PYEar + DIVISION + PMonth + DIVISION + PDay;
   Val(PYear, Year, ErrorCode);
   if ErrorCode <> 0 then Valid:= false;
+  if ((Year < 1800) or (Year > 2399)) then Valid := false;
   Val(PMonth, Month, ErrorCode);
   if ErrorCode <> 0 then Valid:= false;
   Val(PDay, Day, ErrorCode);

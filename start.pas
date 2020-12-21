@@ -28,6 +28,10 @@ TForm1 = class(TForm)
   EditTimeMinute: TEdit;
   EditLongitudeSeconds: TEdit;
   EditTimeSecond: TEdit;
+  LblTimeInfo2: TLabel;
+  LblTimeInfo: TLabel;
+  LblDateInfo2: TLabel;
+  LblDatetimeInfo: TLabel;
   LblManual: TLabel;
   lblEnterData: TLabel;
   LblStatus: TLabel;
@@ -47,6 +51,7 @@ TForm1 = class(TForm)
   procedure BtnCloseClick;
   procedure BtnHelpClick(Sender: TObject);
   procedure FormShow;
+
 
 private
   procedure ProcessName;
@@ -76,7 +81,7 @@ const
   HELP_TXT = 'HTML/DataInvoer.html';
 
 var
-  Name, LocationName: String;
+  LocationName: String;
   Longitude, Latitude: TValidatedDoubleDto;
   Date: TValidatedDateDto;
   Time: TValidatedTimeDto;
@@ -249,6 +254,8 @@ begin
   LblStatus.Caption:= INSTRUCTION;
   ReadyForCalc:= false;
 end;
+
+
 
 
 

@@ -16,6 +16,7 @@ uses
 
 begin
   RequireDerivedFormResource:=True;
+  Application.Title:='Tetenburg';
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);

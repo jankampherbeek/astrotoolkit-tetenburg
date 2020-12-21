@@ -1,10 +1,10 @@
 object Form1: TForm1
   Left = 850
-  Height = 430
+  Height = 467
   Top = 303
   Width = 532
-  Caption = 'Charts Input'
-  ClientHeight = 430
+  Caption = 'Invoer gegevens'
+  ClientHeight = 467
   ClientWidth = 532
   Color = 16119266
   OnShow = FormShow
@@ -13,8 +13,8 @@ object Form1: TForm1
     Left = 13
     Height = 44
     Top = 8
-    Width = 335
-    Caption = 'Tetenburg software'
+    Width = 174
+    Caption = 'Tetenburg'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clOlive
     Font.Height = -40
@@ -43,7 +43,7 @@ object Form1: TForm1
   object BtnCalc: TButton
     Left = 448
     Height = 25
-    Top = 392
+    Top = 422
     Width = 75
     Caption = 'Bereken'
     OnClick = BtnCalcClick
@@ -176,7 +176,7 @@ object Form1: TForm1
   object LblDate: TLabel
     Left = 15
     Height = 15
-    Top = 234
+    Top = 271
     Width = 149
     Caption = 'Datum (j, m, d, Gregoriaans)'
     ParentColor = False
@@ -184,7 +184,7 @@ object Form1: TForm1
   object EditDateMonth: TEdit
     Left = 85
     Height = 23
-    Top = 253
+    Top = 290
     Width = 33
     NumbersOnly = True
     TabOrder = 10
@@ -192,15 +192,15 @@ object Form1: TForm1
   object EditDateDay: TEdit
     Left = 123
     Height = 23
-    Top = 253
+    Top = 290
     Width = 31
     NumbersOnly = True
     TabOrder = 11
   end
   object EditDateYear: TEdit
-    Left = 13
+    Left = 16
     Height = 23
-    Top = 253
+    Top = 290
     Width = 65
     NumbersOnly = True
     TabOrder = 9
@@ -208,15 +208,15 @@ object Form1: TForm1
   object LblTime: TLabel
     Left = 245
     Height = 15
-    Top = 235
-    Width = 125
-    Caption = 'Tijd (u, m, s) in UT/MGT'
+    Top = 272
+    Width = 65
+    Caption = 'Tijd (u, m, s)'
     ParentColor = False
   end
   object EditTimeHour: TEdit
     Left = 245
     Height = 23
-    Top = 253
+    Top = 290
     Width = 32
     NumbersOnly = True
     TabOrder = 12
@@ -224,7 +224,7 @@ object Form1: TForm1
   object EditTimeMinute: TEdit
     Left = 280
     Height = 23
-    Top = 253
+    Top = 290
     Width = 32
     NumbersOnly = True
     TabOrder = 13
@@ -232,15 +232,15 @@ object Form1: TForm1
   object EditTimeSecond: TEdit
     Left = 316
     Height = 23
-    Top = 253
+    Top = 290
     Width = 32
     NumbersOnly = True
     TabOrder = 14
   end
   object LblStatus: TLabel
-    Left = 13
+    Left = 16
     Height = 15
-    Top = 296
+    Top = 333
     Width = 48
     Caption = 'LblStatus'
     ParentColor = False
@@ -248,7 +248,7 @@ object Form1: TForm1
   object BtnClose: TButton
     Left = 363
     Height = 25
-    Top = 392
+    Top = 422
     Width = 75
     Cancel = True
     Caption = 'Sluiten'
@@ -256,14 +256,14 @@ object Form1: TForm1
     TabOrder = 16
   end
   object EditName: TEdit
-    Left = 13
+    Left = 16
     Height = 23
     Top = 144
     Width = 507
     TabOrder = 0
   end
   object LblName: TLabel
-    Left = 13
+    Left = 16
     Height = 15
     Top = 128
     Width = 93
@@ -294,6 +294,66 @@ object Form1: TForm1
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object LblDatetimeInfo: TLabel
+    Left = 16
+    Height = 15
+    Top = 240
+    Width = 155
+    Caption = 'Eerst jaar, dan maand en dag.'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object LblDateInfo2: TLabel
+    Left = 16
+    Height = 15
+    Top = 256
+    Width = 184
+    Caption = 'Ondersteunt de periode 1800-2399.'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object LblTimeInfo: TLabel
+    Left = 245
+    Height = 15
+    Top = 240
+    Width = 139
+    Caption = 'Voer de tijd in als UT/MGT.'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object LblTimeInfo2: TLabel
+    Left = 245
+    Height = 15
+    Top = 256
+    Width = 81
+    Caption = '24 uurs notatie.'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
     ParentColor = False
     ParentFont = False
   end

@@ -333,7 +333,6 @@ object FormChartsPositions: TFormChartsPositions
     Top = 377
     Width = 56
     TabOrder = 9
-    Text = '1990'
   end
   object EditDeathMonth: TEdit
     Left = 432
@@ -341,7 +340,6 @@ object FormChartsPositions: TFormChartsPositions
     Top = 377
     Width = 24
     TabOrder = 10
-    Text = '9'
   end
   object EditDeathDay: TEdit
     Left = 464
@@ -349,7 +347,6 @@ object FormChartsPositions: TFormChartsPositions
     Top = 377
     Width = 24
     TabOrder = 11
-    Text = '24'
   end
   object LblDeathDate: TLabel
     Left = 368
@@ -365,7 +362,6 @@ object FormChartsPositions: TFormChartsPositions
     Top = 377
     Width = 24
     TabOrder = 12
-    Text = '11'
   end
   object EditDeathMinute: TEdit
     Left = 536
@@ -373,7 +369,6 @@ object FormChartsPositions: TFormChartsPositions
     Top = 377
     Width = 24
     TabOrder = 13
-    Text = '32'
   end
   object EditDeathSecond: TEdit
     Left = 568
@@ -381,7 +376,6 @@ object FormChartsPositions: TFormChartsPositions
     Top = 377
     Width = 24
     TabOrder = 14
-    Text = '33'
   end
   object LblDeathTime: TLabel
     Left = 504
